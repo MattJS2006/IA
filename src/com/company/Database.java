@@ -10,6 +10,7 @@ public class Database {
         this.filename = filename;
         this.rowWidth = rowWidth;
         count = FileHandler.countLines(filename);
+        correctLength();
     }
 
     // add a new record to the end of the database
@@ -54,4 +55,21 @@ public class Database {
         return false;
     }
 
+    public void correctLength(){
+        for(int i = 0;i < count; i++){
+            String data = FileHandler.readLineAt(filename, i);
+            if(data.length() < rowWidth){
+                while(data.length() < rowWidth){
+                    data = data + "#";
+                }
+                FileHandler.appendLine(filename, data);
+                count = count+1;
+            } else if(data.length() > rowWidth){
+                System.out.println("The data is too long!");
+            } else {
+                FileHandler.appendLine(filename, data);
+                count = count+1;
+            }
+        }
+    }
 }

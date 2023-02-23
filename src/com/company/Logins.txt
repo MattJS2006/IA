@@ -1,0 +1,6 @@
+Username            ,Password            ,Admin               ,
+Swann,Matthew,Y
+Jeff,Bazos,N
+Steve,Mcqueen,N
+Tottenham,Hotspur,N
+Jason,Marchant,Y
