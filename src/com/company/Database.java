@@ -1,5 +1,4 @@
 package com.company;
-import java.io.File;
 import java.util.Random;
 
 public class Database {
@@ -66,21 +65,26 @@ public class Database {
     }
 
     public void correctLength(){
-        String title = FileHandler.readLineAt(filename, 0);
+        String change;
         for(int i = 0;i < count; i++){
             String data = FileHandler.readLineAt(filename, i);
             if(data.length() < rowWidth){
+                int j = 0;
                 while(data.length() < rowWidth){
-                    if()
-                    data = data + "#";
+                    if(FileHandler.randomRead(filename,((i*rowWidth)+j)) == ','){
+                        j++;
+                    } else {
+                        change = "#";
+                        String newData = data.substring(0,j) + change + data.substring(j+1);
+                        data = newData;
+                        j++;
+                    }
                 }
                 FileHandler.appendLine(filename, data);
-                count = count++;
             } else if(data.length() > rowWidth){
                 System.out.println("The data is too long!");
             } else {
                 FileHandler.appendLine(filename, data);
-                count = count++;
             }
         }
     }
