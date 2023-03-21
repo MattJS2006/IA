@@ -51,7 +51,7 @@ public class FileHandler {
             int count = 0;
             String line = br.readLine();
             while (line != null){
-                count = count++;
+                count = count+1;
                 line = br.readLine();
             }
             return count;

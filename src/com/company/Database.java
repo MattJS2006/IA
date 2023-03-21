@@ -6,10 +6,12 @@ public class Database {
     private String filename;
     private int rowWidth;
     private int count;
+    private int dataMaxLength;
 
-    public Database(String filename, int rowWidth) {
+    public Database(String filename, int rowWidth, int dataMaxLength) {
         this.filename = filename;
-        this.rowWidth = rowWidth;
+        this.rowWidth = rowWidth + (rowWidth/dataMaxLength);
+        this.dataMaxLength = dataMaxLength;
         count = FileHandler.countLines(filename);
         correctLength();
     }
@@ -70,8 +72,18 @@ public class Database {
             String data = FileHandler.readLineAt(filename, i);
             if(data.length() < rowWidth){
                 int j = 0;
-                while(data.length() < rowWidth){
-                    if(FileHandler.randomRead(filename,((i*rowWidth)+j)) == ','){
+                while(data.length() < rowWidth) {
+                    if(dataLength(j,i) == -1){
+                        change = "#";
+                        String newData = data.substring(0,j) + change + data.substring(j+1);
+                        data = newData;
+                        j++;
+                    } else if(FileHandler.randomRead(filename,((i*rowWidth)+j)) != ' ') {
+                        j++;
+                    } else if(dataLength(j,i) == 1){
+                        change = ",";
+                        String newData = data.substring(0,j) + change + data.substring(j+1);
+                        data = newData;
                         j++;
                     } else {
                         change = "#";
@@ -85,6 +97,14 @@ public class Database {
                 System.out.println("The data is too long!");
             } else {
                 FileHandler.appendLine(filename, data);
+            }
+        }
+    }
+
+    public int dataLength(int pos, int line){
+        if(pos > dataMaxLength){
+            if(FileHandler.randomRead(filename,((line*rowWidth)+pos)) != ','){
+                return 0;
             }
         }
     }
