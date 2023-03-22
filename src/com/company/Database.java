@@ -10,7 +10,7 @@ public class Database {
 
     public Database(String filename, int rowWidth, int dataMaxLength) {
         this.filename = filename;
-        this.rowWidth = rowWidth + (rowWidth/dataMaxLength);
+        this.rowWidth = rowWidth + ((rowWidth/dataMaxLength)+1);
         this.dataMaxLength = dataMaxLength;
         count = FileHandler.countLines(filename);
         correctLength();
@@ -73,13 +73,18 @@ public class Database {
             if(data.length() < rowWidth){
                 int j = 0;
                 while(data.length() < rowWidth) {
-                    if(dataLength(j,i) == -1){
-                        change = "#";
-                        String newData = data.substring(0,j) + change + data.substring(j+1);
+                    if (dataLength(j,i) == 0){
+                        change = " ";
+                        String newData = data.substring(0,j) + change + data.substring(j);
                         data = newData;
                         j++;
                     } else if(FileHandler.randomRead(filename,((i*rowWidth)+j)) != ' ') {
                         j++;
+                    } else if(dataLength(j,i) == -1){
+                            change = "#";
+                            String newData = data.substring(0,j) + change + data.substring(j+1);
+                            data = newData;
+                            j++;
                     } else if(dataLength(j,i) == 1){
                         change = ",";
                         String newData = data.substring(0,j) + change + data.substring(j+1);
@@ -102,10 +107,13 @@ public class Database {
     }
 
     public int dataLength(int pos, int line){
-        if(pos > dataMaxLength){
-            if(FileHandler.randomRead(filename,((line*rowWidth)+pos)) != ','){
+        if (FileHandler.randomRead(filename,((line*rowWidth)+pos)) != ' ') {
+            if (FileHandler.randomRead(filename, ((line * rowWidth) + pos - 1)) != '#' && FileHandler.randomRead(filename, ((line * rowWidth) + pos)) != ',') {
                 return 0;
+            } else if (FileHandler.randomRead(filename, ((line * rowWidth) + pos)) != ',') {
+                return -1;
             }
         }
+        return 1;
     }
 }
