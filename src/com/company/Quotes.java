@@ -16,8 +16,8 @@ public class Quotes {
 
     public void setQuotes(){
         int count = FileHandler.countLines(filename);
-        for(int i = 1; i < count; i++){
-            quotes.add(FileHandler.readFromFile(filename,i-1));
+        for(int i = 0; i < count; i++){
+            quotes.add(FileHandler.readFromFile(filename,i));
         }
         System.out.println(quotes);
     }
@@ -37,5 +37,10 @@ public class Quotes {
         currentPos = n;
         String quote = quotes.get(n);
         return quote;
+    }
+
+    public void displayQuote(){
+        System.out.println(getQuote());
+
     }
 }
