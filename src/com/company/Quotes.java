@@ -40,7 +40,7 @@ public class Quotes {
     }
 
     public void displayQuote(){
-        System.out.println(getQuote());
+        System.out.println("\n" + getQuote());
 
     }
 }
