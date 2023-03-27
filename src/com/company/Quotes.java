@@ -41,6 +41,5 @@ public class Quotes {
 
     public void displayQuote(){
         System.out.println("\n" + getQuote());
-
     }
 }
