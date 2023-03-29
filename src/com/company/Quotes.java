@@ -8,6 +8,7 @@ public class Quotes {
     private int currentPos;
     private ArrayList<String> quotes = new ArrayList<String>();
     private String filename = "src/com/company/Quotes.txt";
+    private static String currentQuote;
 
     public Quotes(){
         currentPos = 0;
@@ -36,10 +37,11 @@ public class Quotes {
         }
         currentPos = n;
         String quote = quotes.get(n);
+        currentQuote = quote;
         return quote;
     }
 
-    public void displayQuote(){
-        System.out.println("\n" + getQuote());
+    public static void displayQuote(){
+        System.out.println("\n" + currentQuote);
     }
 }
