@@ -21,6 +21,15 @@ public class Calendar {
     }
 
     public void Daily(){
-        DailyRunner newQuote = new DailyRunner(cal, Quotes.displayQuote(), "newQuote");
+        Thread t1 = new Thread(new Calendar.RunnableImpl());
+        DailyRunner newQuote = new DailyRunner(cal, t1, "newQuote");
+    }
+
+    private class RunnableImpl implements Runnable {
+        public void run() {
+            System.out.println(Thread.currentThread().getName() + ", executing run() method!");
+            Quotes.getQuote();
+            Quotes.displayQuote();
+        }
     }
 }
