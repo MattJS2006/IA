@@ -5,31 +5,32 @@ import java.util.ArrayList;
 
 public class Quotes {
 
-    private int currentPos;
-    private ArrayList<String> quotes = new ArrayList<String>();
+    private static int currentPos;
+    private static ArrayList<String> quotes = new ArrayList<String>();
     private String filename = "src/com/company/Quotes.txt";
     private static String currentQuote;
 
-    public Quotes(){
+    public Quotes() {
         currentPos = 0;
         setQuotes();
+        getQuote();
     }
 
-    public void setQuotes(){
+    public void setQuotes() {
         int count = FileHandler.countLines(filename);
-        for(int i = 0; i < count; i++){
-            quotes.add(FileHandler.readFromFile(filename,i));
+        for (int i = 0; i < count; i++) {
+            quotes.add(FileHandler.readFromFile(filename, i));
         }
         System.out.println(quotes);
     }
 
-    public String getQuote(){
+    public static String getQuote() {
         Random rand = new Random();
         boolean found = false;
         int n = 0;
-        while(!found) {
+        while (!found) {
             n = rand.nextInt(quotes.size());
-            if (n == currentPos){
+            if (n == currentPos) {
                 found = false;
             } else {
                 found = true;
@@ -41,7 +42,7 @@ public class Quotes {
         return quote;
     }
 
-    public static void displayQuote(){
+    public static void displayQuote() {
         System.out.println("\n" + currentQuote);
     }
 }

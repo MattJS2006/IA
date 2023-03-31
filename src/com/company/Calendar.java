@@ -5,9 +5,19 @@ import java.util.Date;
 public class Calendar {
 
     private java.util.Calendar cal;
+    private java.util.Calendar now;
 
     public Calendar(){
         cal = java.util.Calendar.getInstance();
+        now = java.util.Calendar.getInstance();
+    }
+
+    public static boolean thisMonth(int month) {
+        if (month == java.util.Calendar.MONTH){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Date returnTime(){
@@ -20,7 +30,24 @@ public class Calendar {
         cal.set(java.util.Calendar.SECOND, second);
     }
 
+    public void setDate(int year,int month, int day, int hour, int minute){
+        cal.set(year, month, day, hour, minute);
+    }
+
     public void Daily(){
-        DailyRunner newQuote = new DailyRunner(cal, Quotes.displayQuote(), "newQuote");
+        Thread t1 = new Thread(new Calendar.RunnableImpl());
+        DailyRunner newQuote = new DailyRunner(cal, t1, "newQuote");
+    }
+
+    public void display() {
+        System.out.println(cal.getTime());
+    }
+
+    private class RunnableImpl implements Runnable {
+        public void run() {
+            System.out.println(Thread.currentThread().getName() + ", executing run() method!");
+            Quotes.getQuote();
+            Quotes.displayQuote();
+        }
     }
 }
