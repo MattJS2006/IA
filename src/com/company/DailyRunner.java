@@ -20,11 +20,13 @@ public class DailyRunner {
         this.runThreadName = runThreadName;
     }
 
+    // Starts the timed execution of a task
     public void start()
     {
         startTimer();
     }
 
+    // Runs the task at a specified time everyday
     private void startTimer(){
         new Timer(runThreadName, true).schedule(new TimerTask() {
             @Override
@@ -35,7 +37,7 @@ public class DailyRunner {
         }, getNextRunTime());
     }
 
-
+    // Gets the next date for the run
     private Date getNextRunTime() {
         Calendar startTime = Calendar.getInstance();
         Calendar now = Calendar.getInstance();
