@@ -21,7 +21,6 @@ public class Quotes {
         for (int i = 0; i < count; i++) {
             quotes.add(FileHandler.readFromFile(filename, i));
         }
-        System.out.println(quotes);
     }
 
     public static String getQuote() {
