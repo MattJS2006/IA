@@ -12,9 +12,11 @@ public class AdultElite extends Level{
     }
 
     // Displays the goals of the Athlete
-    public void displayGoals(){
+    public void display(){
+        displayLevel();
+        System.out.println("Goals :");
         for(int i = 0; i < goals.size(); i++){
-            System.out.println((i+1) + " ~ " + goals.get(i));
+            System.out.println("    " + (i+1) + " ~ " + goals.get(i));
         }
     }
 

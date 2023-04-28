@@ -12,9 +12,11 @@ public class Beginner extends Level{
     }
 
     // Displays the Athlete's goals
-    public void displayGoals(){
+    public void display(){
+        displayLevel();
+        System.out.println("Goals :");
         for(int i = 0; i < goals.size(); i++){
-            System.out.println((i+1) + " ~ " + goals.get(i));
+            System.out.println("    " + (i+1) + " ~ " + goals.get(i));
         }
     }
 

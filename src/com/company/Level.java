@@ -35,9 +35,13 @@ public class Level {
       System.out.println("The new level is: " + current);
     }
 
-    public void displayLevel() {
+    public void display() {
       System.out.println("Your current level is: " + current);
     }
+
+  public void displayLevel() {
+    System.out.println("Your current level is: " + current);
+  }
 
     public boolean correctLevel() {
       for (int i = 0; i < levels.size(); i++) {
