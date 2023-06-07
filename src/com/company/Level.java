@@ -6,6 +6,8 @@ public class Level {
   
   private String current;
   private ArrayList<String> levels = new ArrayList<String>();
+  // An ArrayList of goals for this Athlete
+  private ArrayList<String> goals = new ArrayList<String>();
   
   public Level(){
     current = null;
@@ -36,7 +38,11 @@ public class Level {
     }
 
     public void display() {
-      System.out.println("Your current level is: " + current);
+      displayLevel();
+      System.out.println("Goals :");
+      for(int i = 0; i < goals.size(); i++){
+        System.out.println("    " + (i+1) + " ~ " + goals.get(i));
+      }
     }
 
   public void displayLevel() {
@@ -51,4 +57,15 @@ public class Level {
       }
       return false;
     }
+
+  // Sets the Athlete's goals
+  public void setGoals(String goal){
+    goals.add(goal);
   }
+
+  // Removes a specified goal
+  public void removeGoal(int pos){
+    pos = pos-1;
+    goals.remove(pos);
+  }
+}
