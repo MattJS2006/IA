@@ -1,9 +1,12 @@
 package com.company;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Programme {
@@ -21,19 +24,15 @@ public class Programme {
         while (day-1 < 7) {
             LocalDate currentDate = startDate.plusDays(day - 1); // Calculate the current date
             Date latestDate = localDateToDate(currentDate);
-            String parts[] = null;
+            long days = numDays(currentDate);
 
             System.out.println(currentDate + ":");
-            line = FileHandler.readFromFile(filename, day - 1);
-            if (line != null) {
-                parts = line.split(": ");
-            }
+            line = FileHandler.readFromFile(filename, (int) days);
+
             String date = dateToString(latestDate);
-            if(parts == null){
-                System.out.println("Rest day / Personal Development");
-            }else if(parts[0] == date){
-                System.out.println(parts[1]);
-            } else {
+            if(line != null){
+                System.out.println(line);
+            }else {
                 System.out.println("Rest day / Personal Development");
             }
             System.out.println();
@@ -53,6 +52,15 @@ public class Programme {
     }
 
     public void clear(){
+    }
 
+    public long numDays(LocalDate current){
+        LocalDate start = LocalDate.parse("2023-01-01");
+        LocalDate end = current;
+
+        long difInDays = start.until(end, ChronoUnit.DAYS);
+
+        System.out.println(difInDays);
+        return difInDays;
     }
 }
