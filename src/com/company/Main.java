@@ -20,6 +20,7 @@ public class Main {
         Dave.display();
         Dave.removeGoal(1);
         Dave.display();
-        new Programme();
+        Programme myProgramme = new Programme();
+        myProgramme.clear();
     }
 }

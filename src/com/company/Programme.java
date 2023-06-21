@@ -1,7 +1,5 @@
 package com.company;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -15,7 +13,6 @@ public class Programme {
     private String filename = "src/com/company/training_programme.txt";
 
     public Programme(){
-        clear();
         LocalDate startDate = LocalDate.now(); // Set the start date as today
         String line;
         int day = 1;
@@ -37,7 +34,6 @@ public class Programme {
             }
             System.out.println();
             day++;
-            System.out.println(currentDate);
         }
     }
 
@@ -52,6 +48,9 @@ public class Programme {
     }
 
     public void clear(){
+        for(int i = 0; i<365; i++){
+            FileHandler.writeLineAt(filename," ",i);
+        }
     }
 
     public long numDays(LocalDate current){
@@ -60,7 +59,6 @@ public class Programme {
 
         long difInDays = start.until(end, ChronoUnit.DAYS);
 
-        System.out.println(difInDays);
         return difInDays;
     }
 }
