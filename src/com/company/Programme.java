@@ -48,9 +48,7 @@ public class Programme {
     }
 
     public void clear(){
-        for(int i = 0; i<365; i++){
-            FileHandler.writeLineAt(filename," ",i);
-        }
+        FileHandler.clearFile(filename);
     }
 
     public long numDays(LocalDate current){

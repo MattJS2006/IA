@@ -1,11 +1,6 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.util.ArrayList;
 
 public class FileHandler {
@@ -211,5 +206,17 @@ public class FileHandler {
             e.printStackTrace();
         }
             return null;
+    }
+
+    public static void clearFile(String fileName){
+        int numLines = countLines(fileName);
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName))) {
+            for(int i = 0; i < numLines; i++){
+                br.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
