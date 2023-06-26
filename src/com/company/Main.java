@@ -21,6 +21,6 @@ public class Main {
         Dave.removeGoal(1);
         Dave.display();
         Programme myProgramme = new Programme();
-        myProgramme.clear();
+        myProgramme.outDays();
     }
 }

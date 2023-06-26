@@ -59,4 +59,9 @@ public class Programme {
 
         return difInDays;
     }
+
+    public void outDays(){
+        LocalDate date = LocalDate.now();
+        System.out.println(numDays(date) + 1);
+    }
 }
