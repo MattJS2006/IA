@@ -37,6 +37,31 @@ public class Programme {
         }
     }
 
+    public void display(){
+        LocalDate startDate = LocalDate.now(); // Set the start date as today
+        String line;
+        int day = 1;
+        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+
+        while (day-1 < 7) {
+            LocalDate currentDate = startDate.plusDays(day - 1); // Calculate the current date
+            Date latestDate = localDateToDate(currentDate);
+            long days = numDays(currentDate);
+
+            System.out.println(currentDate + ":");
+            line = FileHandler.readFromFile(filename, (int) days);
+
+            String date = dateToString(latestDate);
+            if(line != null){
+                System.out.println(line);
+            }else {
+                System.out.println("Rest day / Personal Development");
+            }
+            System.out.println();
+            day++;
+        }
+    }
+
     public String dateToString(Date date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(date);
@@ -63,5 +88,9 @@ public class Programme {
     public void outDays(){
         LocalDate date = LocalDate.now();
         System.out.println(numDays(date) + 1);
+    }
+
+    public void changeProgramme(int line, String text){
+        FileHandler.changeFile(filename,line,text);
     }
 }

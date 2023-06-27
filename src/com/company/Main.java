@@ -22,5 +22,7 @@ public class Main {
         Dave.display();
         Programme myProgramme = new Programme();
         myProgramme.outDays();
+        myProgramme.changeProgramme(180, "Today is Tuesday");
+        myProgramme.display();
     }
 }
