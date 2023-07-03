@@ -220,10 +220,14 @@ public class FileHandler {
 
     }
 
+    public static void emptyFile(String fileName){
+        writeToFile(fileName,"",false);
+    }
+
     public static void changeFile(String fileName, int lineNum, String data){
         ArrayList<String> lines = new ArrayList<String>();
         String line;
-        for(int i = 0; i<366; i++) {
+        for(int i = 1; i<=366; i++) {
             if (i != lineNum) {
                 line = readFromFile(fileName, i);
                 lines.add(line);
@@ -231,8 +235,9 @@ public class FileHandler {
                 lines.add(data);
             }
         }
-        for(int i = 0; i<366; i++){
-            writeLineAt(fileName,lines.get(i),i);
+        emptyFile(fileName);
+        for(int i = lines.size()-1; i>=1; i--){
+            writeToFile(fileName,lines.get(i),true);
         }
     }
 }
