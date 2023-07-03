@@ -221,22 +221,18 @@ public class FileHandler {
     }
 
     public static void changeFile(String fileName, int lineNum, String data){
-        try (PrintWriter pr = new PrintWriter(new FileWriter(fileName,false))) {
-            ArrayList<String> lines = new ArrayList<String>();
-            String line;
-            for(int i = 0; i<366; i++) {
-                if(i != lineNum) {
-                    line = readFromFile(fileName, i);
-                    lines.add(line);
-                } else {
-                    lines.add(data);
-                }
+        ArrayList<String> lines = new ArrayList<String>();
+        String line;
+        for(int i = 0; i<366; i++) {
+            if (i != lineNum) {
+                line = readFromFile(fileName, i);
+                lines.add(line);
+            } else {
+                lines.add(data);
             }
-            for(int i = 0; i<366; i++){
-                writeToFile(fileName,lines.get(i),true);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        for(int i = 0; i<366; i++){
+            writeLineAt(fileName,lines.get(i),i);
         }
     }
 }
