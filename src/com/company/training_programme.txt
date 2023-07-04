@@ -172,8 +172,6 @@
 
 
 
-
-
 Race day
 Hurdles
 Today is Tuesday
@@ -183,7 +181,11 @@ DAY OFF
 Train for Cross-country for 30 minutes
 Today is Monday
 
+Today is Tuesday
+Today is Tuesday
 
+Race day
+Hurdles
 
 
 
@@ -360,6 +362,5 @@ Today is Monday
 
 
 
-
-
-
+null
+null
