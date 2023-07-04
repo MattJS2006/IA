@@ -236,7 +236,7 @@ public class FileHandler {
             }
         }
         emptyFile(fileName);
-        for(int i = lines.size()-1; i>=1; i--){
+        for(int i = 1; i < lines.size(); i++){
             writeToFile(fileName,lines.get(i),true);
         }
     }
