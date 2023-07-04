@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         // Database logins = new Database("src/com/company/Logins.txt",80,20);
         // Creates a new quote from the list of quotes and displays it
-        //  Quotes quote = new Quotes();
-        // quote.displayQuote();
+        Quotes quote = new Quotes();
+        quote.displayQuote();
         // Creates a calendar and displays the current time
         Calendar cal = new Calendar();
         System.out.println(cal.returnTime());
@@ -22,7 +22,7 @@ public class Main {
         Dave.display();
         Programme myProgramme = new Programme();
         myProgramme.outDays();
-        myProgramme.changeProgramme(179, "Today is Tuesday");
+        myProgramme.changeProgramme(185, "Today is Tuesday");
         myProgramme.display();
     }
 }
