@@ -33,8 +33,12 @@ public class Level {
     }
 
     public void setLevel(String newLevel){
-      current = newLevel;
-      System.out.println("The new level is: " + current);
+      if(correctLevel(newLevel)) {
+        current = newLevel;
+        System.out.println("The new level is: " + current);
+      } else {
+        System.out.println("This level is invalid");
+      }
     }
 
     public void display() {
@@ -49,9 +53,9 @@ public class Level {
     System.out.println("Your current level is: " + current);
   }
 
-    public boolean correctLevel() {
+    public boolean correctLevel(String level) {
       for (int i = 0; i < levels.size(); i++) {
-        if (levels.get(i) == current) {
+        if (levels.get(i) == level) {
           return true;
         }
       }
