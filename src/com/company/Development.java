@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Development extends Level{
+public class Development extends Athlete {
 
     // An ArrayList of goals for this level of Athlete
     private ArrayList<String> goals = new ArrayList<String>();

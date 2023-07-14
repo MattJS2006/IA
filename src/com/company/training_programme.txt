@@ -169,9 +169,6 @@
 
 
 
-
-
-
 Race day
 Hurdles
 Today is Tuesday
@@ -183,9 +180,12 @@ Today is Monday
 
 Today is Tuesday
 Today is Tuesday
+Today is Tuesday
+Today is Tuesday
+Today is Tuesday
 
-Race day
-Hurdles
+
+
 
 
 

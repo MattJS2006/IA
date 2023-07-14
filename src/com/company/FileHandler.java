@@ -227,7 +227,7 @@ public class FileHandler {
     public static void changeFile(String fileName, int lineNum, String data){
         ArrayList<String> lines = new ArrayList<String>();
         String line;
-        for(int i = 1; i<=366; i++) {
+        for(int i = 1; i<366; i++) {
             if (i != lineNum) {
                 line = readFromFile(fileName, i);
                 lines.add(line);

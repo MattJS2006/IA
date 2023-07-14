@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class YoungElite extends Level{
+public class YoungElite extends Athlete {
 
     private ArrayList<String> goals = new ArrayList<String>();
 
