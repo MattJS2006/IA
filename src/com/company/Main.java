@@ -14,5 +14,15 @@ public class Main {
         Calendar nextQuote = new Calendar();
         nextQuote.setCal(0,0,0);
         nextQuote.Daily();
+        // Creates a new Beginner Athlete and displays there level
+        Beginner Dave = new Beginner();
+        Dave.setGoals("Run 100m in 20s by May");
+        Dave.display();
+        Dave.removeGoal(1);
+        Dave.display();
+        Programme myProgramme = new Programme();
+        myProgramme.outDays();
+        myProgramme.changeProgramme(185, "Today is Tuesday");
+        myProgramme.display();
     }
 }

@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class AdultDevelopment extends Level{
+public class AdultDevelopment extends Athlete {
 
     // An ArrayList of goals for this level of Athlete
     private ArrayList<String> goals = new ArrayList<String>();
@@ -12,9 +12,11 @@ public class AdultDevelopment extends Level{
     }
 
     // Displays the Athlete's goals
-    public void displayGoals(){
+    public void display(){
+        displayLevel();
+        System.out.println("Goals :");
         for(int i = 0; i < goals.size(); i++){
-            System.out.println((i+1) + " ~ " + goals.get(i));
+            System.out.println("    " + (i+1) + " ~ " + goals.get(i));
         }
     }
 
